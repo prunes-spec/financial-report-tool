@@ -7,11 +7,10 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib import colors
-from reportlab.lib.units import inch
 
 def crear_grafico_ratios(ratios):
     nombres = list(ratios.keys())
-    valores = [v * 100 for v in ratios.values()]  # Convertir a %
+    valores = [v * 100 for v in ratios.values()]
 
     plt.figure(figsize=(6, 3))
     plt.bar(nombres, valores, color='#0057b8')
@@ -58,23 +57,4 @@ def generar_pdf(datos, ratios, empresa, output_path):
         ["Activo Total", f"${datos['activo_total']}"],
         ["Patrimonio", f"${datos['patrimonio']}"]
     ]
-    table_fin = Table(data_fin, colWidths=[200, 150])
-    table_fin.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#002366")),
-        ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
-        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
-        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('BOTTOMPADDING', (0,0), (-1,0), 12),
-        ('GRID', (0,0), (-1,-1), 1, colors.black)
-    ]))
-    story.append(table_fin)
-    story.append(Spacer(1, 12))
-
-    # Ratios
-    story.append(Paragraph("Ratios Clave", style_heading))
-    data_ratios = [
-        ["Ratio", "Valor"],
-        ["Margen EBITDA", f"{ratios['margen_ebitda']:.2%}"],
-        ["Endeudamiento", f"{ratios['endeudamiento']:.2%}"],
-        ["ROA",
-
+    table_fin = Table(data_fin, col

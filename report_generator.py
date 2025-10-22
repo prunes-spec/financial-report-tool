@@ -77,3 +77,4 @@ def generar_pdf(datos, ratios, empresa, output_path):
         ["Margen EBITDA", f"{ratios['margen_ebitda']:.2%}"],
         ["Endeudamiento", f"{ratios['endeudamiento']:.2%}"],
         ["ROA",
+

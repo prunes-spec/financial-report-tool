@@ -2,5 +2,5 @@ streamlit
 pdfplumber
 pandas
 jinja2
-weasyprint
+reportlab
 matplotlib

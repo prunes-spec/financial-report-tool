@@ -1,6 +1,0 @@
-streamlit
-pdfplumber
-pandas
-jinja2
-weasyprint
-matplotlib

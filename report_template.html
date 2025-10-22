@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #222; line-height: 1.6; }
+    .header { background-color: #002366; color: white; padding: 25px 40px; }
+    .header h1 { margin: 0; font-weight: 600; }
+    .content { padding: 30px 40px; }
+    .section { margin-bottom: 25px; }
+    .metric-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+    .metric-label { font-weight: bold; color: #0057b8; }
+    .chart { text-align: center; margin-top: 20px; }
+    img { max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Informe Financiero Ejecutivo</h1>
+    <p>Cliente: {{ empresa }} | Fecha: {{ "%d/%m/%Y"|strftime }}</p>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <h2>Indicadores Financieros</h2>
+      <div class="metric-row">
+        <span class="metric-label">Ingresos</span>
+        <span>${{ datos.ingresos }}</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">EBITDA</span>
+        <span>${{ datos.ebitda }}</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Activo Total</span>
+        <span>${{ datos.activo_total }}</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Patrimonio</span>
+        <span>${{ datos.patrimonio }}</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Ratios Clave</h2>
+      <div class="metric-row">
+        <span class="metric-label">Margen EBITDA</span>
+        <span>{{ ratios.margen_ebitda }}</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Endeudamiento</span>
+        <span>{{ ratios.endeudamiento }}</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">ROA</span>
+        <span>{{ ratios.roa }}</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">ROE</span>
+        <span>{{ ratios.roe }}</span>
+      </div>
+    </div>
+
+    <div class="chart">
+      <h3>Visualización de Ratios</h3>
+      <img src="data:image/png;base64,{{ grafico_b64 }}" alt="Gráfico de ratios">
+    </div>
+  </div>
+</body>
+</html>
